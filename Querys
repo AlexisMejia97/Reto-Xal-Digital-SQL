@@ -37,4 +37,4 @@ GROUP BY a.nombre_aerolinea, dia
 HAVING COUNT (*) >=2
 ORDER BY  NUM_VUELOS,DIA
 
---Tomar en cuenta que la pregunta dice mas de dos vuelos y no hay niguno con mas de dos vuelos por lo tanto deje la condicion como de 2 o mas vuelos por dia
+--Tomar en cuenta que la pregunta dice mas de dos vuelos y no hay ninguno con mas de dos vuelos por lo tanto deje la condicion como de 2 o mas vuelos por dia
