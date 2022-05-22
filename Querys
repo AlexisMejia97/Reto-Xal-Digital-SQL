@@ -1,0 +1,40 @@
+--Reto XalDigital  by Alexis Mejia
+--Comandos ejecutados en SQL server
+
+
+
+
+--1.¿Cuál es el nombre aeropuerto que ha tenido mayor movimiento durante el año?
+
+SELECT TOP 1 nombre_aeropuerto FROM aeropuertos a
+JOIN vuelos v
+ON a.id_aeropuerto = v.id_aeropuerto
+GROUP BY nombre_aeropuerto
+ORDER BY COUNT(nombre_aeropuerto) DESC
+
+
+--2. ¿Cuál es el nombre aerolínea que ha realizado mayor número de vuelos durante el año?
+
+SELECT TOP 1 nombre_aerolinea FROM aerolineas a
+JOIN vuelos v
+ON a.id_aerolinea = v.id_aerolinea
+GROUP BY nombre_aerolinea
+ORDER BY COUNT(nombre_aerolinea) DESC
+
+--3. ¿En qué día se han tenido mayor número de vuelos?
+
+SELECT  TOP 1 dia FROM vuelos
+GROUP BY dia
+ORDER BY COUNT(dia) DESC
+
+
+--4. ¿Cuáles son las aerolíneas que tienen mas de 2 vuelos por día?
+
+SELECT  a.nombre_aerolinea, dia , COUNT(v.id_aerolinea) AS NUM_VUELOS FROM aerolineas a
+JOIN vuelos v
+ON a.id_aerolinea  = v.id_aerolinea 
+GROUP BY a.nombre_aerolinea, dia
+HAVING COUNT (*) >=2
+ORDER BY  NUM_VUELOS,DIA
+
+--Tomar en cuenta que la pregunta dice mas de dos vuelos y no hay niguno con mas de dos vuelos por lo tanto deje la condicion como de 2 o mas vuelos por dia
